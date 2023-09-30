@@ -5,7 +5,23 @@ const taxRate = 0.0625;
 
 /* function to round to 2 decimal places */
 function roundToTwo(num) {
-    return Math.round(num * 100) / 100;
+    let result = Math.round(num * 100) / 100;
+    
+    /* convert to string */
+    let str = result.toString();
+    
+    /* case for whole numbers */
+    if (str.indexOf('.') == -1) {
+        return str + '.00';
+    }
+
+    /* add trailing zero if needed */
+    let parts = str.split('.');
+    if (parts[1].length == 1) {
+        return str + '0';
+    }
+
+    return str;
 }
 
 function placeOrder() {
